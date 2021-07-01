@@ -203,12 +203,12 @@ carousel_slider.create();
 #### html
 ```html
 <div class="carousel-full">
-	<div class="slider-container">
-		<div class="container">
-            <div class="slider-control">
-                <button class="prev">prev</button>
-                <button class="next">next</button>
-            </div>
+  <div class="slider-container">
+    <div class="container">
+      <div class="slider-control">
+        <button class="prev">prev</button>
+        <button class="next">next</button>
+      </div>
 
             <ul class="slider">
                 <li class="item">
