@@ -187,15 +187,15 @@ carousel_slider.create();
 #### Css
 ```css
 .carousel{
-	.slider-container{
-		padding-top: 30px;
-		padding-bottom: 30px;
-	}
-	.slider{
-		@media (min-width: 500px){
-			--nb: 3;
-		}	
-	}
+    .slider-container{
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .slider{
+        @media (min-width: 500px){
+            --nb: 3;
+        }	
+    }
 }
 ```
 
