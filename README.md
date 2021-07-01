@@ -224,7 +224,6 @@ carousel_slider.create();
                     <h3>Lorem</h3>
                     <p>Lorem ipsum dolor sit amet.</p>
                     <a href="https://google.fr" target="_blank">see</a>
-
                 </li>
                 <li class="item">
                     <img loading="lazy" src="https://picsum.photos/id/885/536/354" alt="">
@@ -258,8 +257,8 @@ carousel_slider.create();
                     <p>Lorem ipsum dolor?</p>
                 </li>
             </ul>
-		</div>
-	</div>
+        </div>
+    </div>
 </div>
 ```
 #### javascript
