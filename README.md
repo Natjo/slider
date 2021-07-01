@@ -16,32 +16,24 @@ Light carousel
 ### Slider full
 #### html
 ```html
-<div class="slider-full">
-    <div class="slider-container">
-        <ul class="slider">
-            <li class="item">
-                <img loading="lazy" src="https://picsum.photos/id/157/536/354" alt="">
-            </li>
-            <li class="item">
-                <img loading="lazy" src="https://picsum.photos/id/845/536/354" alt="">
-            </li>
-            <li class="item">
-                <img loading="lazy" src="https://picsum.photos/id/885/536/354" alt="">
-            </li>
-            <li class="item">
-                <img loading="lazy" src="https://picsum.photos/id/825/536/354" alt="">
-            </li>
-            <li class="item">
-                <img loading="lazy" src="https://picsum.photos/id/145/536/354" alt="">
-            </li>
-            <li class="item">
-                <img loading="lazy" src="https://picsum.photos/id/55/536/354" alt="">
-            </li>
-            <li class="item">
-                <img loading="lazy" src="https://picsum.photos/id/88/536/354" alt="">
-            </li>
-        </ul>
-    </div>
+<div class="slider slider-full">
+    <ul class="slider-wrapper">
+        <li class="item1">
+            <img loading="lazy" src="https://picsum.photos/id/157/536/354" alt="">
+        </li>
+        <li class="item1">
+            <img loading="lazy" src="https://picsum.photos/id/845/536/354" alt="">
+        </li>
+        <li class="item1">
+            <img loading="lazy" src="https://picsum.photos/id/885/536/354" alt="">
+        </li>
+        <li class="item1">
+            <img loading="lazy" src="https://picsum.photos/id/825/536/354" alt="">
+        </li>
+        <li class="item1">
+            <img loading="lazy" src="https://picsum.photos/id/145/536/354" alt="">
+        </li>
+    </ul>
 </div>
 ```
 #### javascript
@@ -56,59 +48,39 @@ slider_full_slider.create();
 ### Slider
 #### html
 ```html
-<div class="mySlider">
-    <div class="container">
-        <div class="slider-container">
-            <ul class="slider">
-                <li class="item">
-                    <img loading="lazy" src="https://picsum.photos/id/157/536/354" alt="">
-                    <h3>Lorem</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Exercitationem, reiciendis optio. Corrupti.
-                    </p>
-                    <a href="https://google.fr" target="_blank">more</a>
-                </li>
-                <li class="item">
-                    <img loading="lazy" src="https://picsum.photos/id/845/536/354" alt="">
-                    <h3>Lorem</h3>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                    <a href="https://google.fr" target="_blank">more</a>
-                </li>
-                <li class="item">
-                    <img loading="lazy" src="https://picsum.photos/id/885/536/354" alt="">
-                    <h3>Lorem</h3>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                    <a href="https://google.fr" target="_blank">more</a>
-                </li>
-                <li class="item">
-                    <img loading="lazy" src="https://picsum.photos/id/825/536/354" alt="">
-                    <h3>Lorem</h3>
-                    <a href="https://google.fr" target="_blank">more</a>
-                </li>
-                <li class="item">
-                    <img loading="lazy" src="https://picsum.photos/id/145/536/354" alt="">
-                    <h3>Lorem ipsum</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Fugiat, blanditiis?
-                    </p>
-                    <a href="https://google.fr" target="_blank">more</a>
-                </li>
-                <li class="item">
-                    <img loading="lazy" src="https://picsum.photos/id/55/536/354" alt="">
-                    <h3>Lorem ipsum</h3>
-                    <p>Lorem ipsum dolor?</p>
-                    <a href="https://google.fr" target="_blank">more</a>
-                </li>
-                <li class="item">
-                    <img loading="lazy" src="https://picsum.photos/id/88/536/354" alt="">
-                    <h3>Lorem ipsum</h3>
-                    <p>Lorem ipsum dolor?</p>
-                </li>
-            </ul>
-        </div>
-    </div>
+<div class="slider mySlider">
+    <ul class="slider-wrapper">
+        <li class="item1">
+            <a href="https://google.fr" target="_blank">
+                <img loading="lazy" src="https://picsum.photos/id/157/536/354" alt="">
+                <h3>Lorem</h3>
+            </a>
+        </li>
+        <li class="item1">
+            <a href="https://google.fr" target="_blank">
+                <img loading="lazy" src="https://picsum.photos/id/845/536/354" alt="">
+                <h3>Lorem</h3>
+            </a>
+        </li>
+        <li class="item1">
+            <a href="https://google.fr" target="_blank">
+                <img loading="lazy" src="https://picsum.photos/id/885/536/354" alt="">
+                <h3>Lorem</h3>
+            </a>
+        </li>
+        <li class="item1">
+            <a href="https://google.fr" target="_blank">
+                <img loading="lazy" src="https://picsum.photos/id/825/536/354" alt="">
+                <h3>Lorem</h3>
+            </a>
+        </li>
+        <li class="item1">
+            <a href="https://google.fr" target="_blank">
+                <img loading="lazy" src="https://picsum.photos/id/145/536/354" alt="">
+                <h3>Lorem ipsum</h3>
+            </a>
+        </li>
+    </ul>
 </div>
 ```
 #### javascript
@@ -123,58 +95,44 @@ slider_slider.create();
 
 #### html
 ```html
-<div class="carousel">
-    <div class="container">
-        <div class="slider-container">
-            <ul class="slider">
-                <li class="item">
-                    <img loading="lazy" src="https://picsum.photos/id/157/536/354" alt="">
-                    <h3>Lorem</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, reiciendis optio.
-                    </p>
-                    <a href="https://google.fr" target="_blank">more</a>
-                </li>
-                <li class="item">
-                    <img loading="lazy" src="https://picsum.photos/id/845/536/354" alt="">
-                    <h3>Lorem</h3>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                    <a href="https://google.fr" target="_blank">more</a>
-                </li>
-                <li class="item">
-                    <img loading="lazy" src="https://picsum.photos/id/885/536/354" alt="">
-                    <h3>Lorem</h3>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                    <a href="https://google.fr" target="_blank">more</a>
-                </li>
-                <li class="item">
-                    <img loading="lazy" src="https://picsum.photos/id/825/536/354" alt="">
-                    <h3>Lorem</h3>
-                    <a href="https://google.fr" target="_blank">more</a>
-                </li>
-                <li class="item">
-                    <img loading="lazy" src="https://picsum.photos/id/145/536/354" alt="">
-                    <h3>Lorem ipsum</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Fugiat, blanditiis?
-                    </p>
-                    <a href="https://google.fr" target="_blank">more</a>
-                </li>
-                <li class="item">
-                    <img loading="lazy" src="https://picsum.photos/id/55/536/354" alt="">
-                    <h3>Lorem ipsum</h3>
-                    <p>Lorem ipsum dolor?</p>
-                    <a href="https://google.fr" target="_blank">more</a>
-                </li>
-                <li class="item">
-                    <img loading="lazy" src="https://picsum.photos/id/88/536/354" alt="">
-                    <h3>Lorem ipsum</h3>
-                    <p>Lorem ipsum dolor?</p>
-                </li>
-            </ul>
-        </div>
-    </div>
+<div class="slider carousel">
+    <ul class="slider-wrapper">
+        <li class="item">
+            <img loading="lazy" src="https://picsum.photos/id/157/536/354" alt="">
+            <h3>Lorem</h3>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, reiciendis
+                optio. Corrupti.
+            </p>
+            <a href="https://google.fr" target="_blank">see</a>
+        </li>
+        <li class="item">
+            <img loading="lazy" src="https://picsum.photos/id/845/536/354" alt="">
+            <h3>Lorem</h3>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <a href="https://google.fr" target="_blank">see</a>
+        </li>
+        <li class="item">
+            <img loading="lazy" src="https://picsum.photos/id/885/536/354" alt="">
+            <h3>Lorem</h3>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <a href="https://google.fr" target="_blank">see</a>
+        </li>
+        <li class="item">
+            <img loading="lazy" src="https://picsum.photos/id/825/536/354" alt="">
+            <h3>Lorem</h3>
+            <a href="https://google.fr" target="_blank">see</a>
+        </li>
+        <li class="item">
+            <img loading="lazy" src="https://picsum.photos/id/145/536/354" alt="">
+            <h3>Lorem ipsum</h3>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Fugiat, blanditiis?
+            </p>
+            <a href="https://google.fr" target="_blank">see</a>
+        </li>
+    </ul>
 </div>
 ```
 #### javascript
@@ -186,77 +144,60 @@ carousel_slider.create();
 #### Css
 ```css
 .carousel{
-    .slider-container{
-        padding-top: 30px;
-        padding-bottom: 30px;
-    }
-    .slider{
-        @media (min-width: 500px){
-            --nb: 3;
-        }	
-    }
+	.slider-wrapper{
+		@media (min-width: 500px){
+			--nb: 3;
+		}	
+	}
 }
 ```
 
 ### Carousel full
 #### html
 ```html
-<div class="carousel-full">
-    <div class="slider-container">
-        <div class="container">
-            <div class="slider-control">
-                <button class="prev">prev</button>
-                <button class="next">next</button>
-            </div>
-
-            <ul class="slider">
-                <li class="item">
-                    <img loading="lazy" src="https://picsum.photos/id/157/536/354" alt="">
-                    <h3>Lorem</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, reiciendis optio.
-                    </p>
-                    <a href="https://google.fr" target="_blank">see</a>
-                </li>
-                <li class="item">
-                    <img loading="lazy" src="https://picsum.photos/id/845/536/354" alt="">
-                    <h3>Lorem</h3>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                    <a href="https://google.fr" target="_blank">see</a>
-                </li>
-                <li class="item">
-                    <img loading="lazy" src="https://picsum.photos/id/885/536/354" alt="">
-                    <h3>Lorem</h3>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                    <a href="https://google.fr" target="_blank">see</a>
-                </li>
-                <li class="item">
-                    <img loading="lazy" src="https://picsum.photos/id/825/536/354" alt="">
-                    <h3>Lorem</h3>
-                    <a href="https://google.fr" target="_blank">see</a>
-                </li>
-                <li class="item">
-                    <img loading="lazy" src="https://picsum.photos/id/145/536/354" alt="">
-                    <h3>Lorem ipsum</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Fugiat, blanditiis?
-                    </p>
-                    <a href="https://google.fr" target="_blank">see</a>
-                </li>
-                <li class="item">
-                    <img loading="lazy" src="https://picsum.photos/id/55/536/354" alt="">
-                    <h3>Lorem ipsum</h3>
-                    <p>Lorem ipsum dolor?</p>
-                    <a href="https://google.fr" target="_blank">see</a>
-                </li>
-                <li class="item">
-                    <img loading="lazy" src="https://picsum.photos/id/88/536/354" alt="">
-                    <h3>Lorem ipsum</h3>
-                    <p>Lorem ipsum dolor?</p>
-                </li>
-            </ul>
+<div class="slider carousel-full">
+    <div class="container">
+        <div class="slider-control">
+            <button class="prev">prev</button>
+            <button class="next">next</button>
         </div>
+
+        <ul class="slider-wrapper">
+            <li class="item shadow">
+                <img loading="lazy" src="https://picsum.photos/id/157/536/354" alt="">
+                <h3>Lorem</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, reiciendis optio.
+                </p>
+                <a href="https://google.fr" target="_blank">see</a>
+            </li>
+            <li class="item shadow">
+                <img loading="lazy" src="https://picsum.photos/id/845/536/354" alt="">
+                <h3>Lorem</h3>
+                <p>Lorem ipsum dolor sit amet.</p>
+                <a href="https://google.fr" target="_blank">see</a>
+            </li>
+            <li class="item shadow">
+                <img loading="lazy" src="https://picsum.photos/id/885/536/354" alt="">
+                <h3>Lorem</h3>
+                <p>Lorem ipsum dolor sit amet.</p>
+                <a href="https://google.fr" target="_blank">see</a>
+            </li>
+            <li class="item shadow">
+                <img loading="lazy" src="https://picsum.photos/id/825/536/354" alt="">
+                <h3>Lorem</h3>
+                <a href="https://google.fr" target="_blank">see</a>
+            </li>
+            <li class="item shadow">
+                <img loading="lazy" src="https://picsum.photos/id/145/536/354" alt="">
+                <h3>Lorem ipsum</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Fugiat, blanditiis?
+                </p>
+                <a href="https://google.fr" target="_blank">see</a>
+            </li>
+        </ul>
     </div>
 </div>
 ```
@@ -271,16 +212,16 @@ carousel_full_slider.create();s
 #### Css
 ```css
 .carousel-full{
-    padding: 30px 0;
-	
-    .slider-control{
-        margin-bottom: 20px;
-    }
-    .slider{
-        @media (min-width: 500px){
-            --nb: 3;
-        }	
-    }
+	padding-bottom: 30px;
+
+	.slider-control{	
+		margin-bottom: 20px;
+	}
+	.slider-wrapper{
+		@media (min-width: 500px){
+			--nb: 3;
+		}	
+	}
 }
 ```
 

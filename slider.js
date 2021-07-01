@@ -4,7 +4,7 @@
  */
 
  function Slider(container){
-	const slider = container.querySelector('.slider');
+	const slider = container.querySelector('.slider-wrapper');
 	const isTouch = 'ontouchstart' in document.documentElement;
 	const items = slider.querySelectorAll('li');
 	const total = items.length;	
@@ -38,7 +38,7 @@
 	const resize = () => {
 		gap = parseInt(getComputedStyle(slider).gridColumnGap);
 		nb = parseInt(getComputedStyle(slider).getPropertyValue('--nb')) || 1;
-		itemW = items[0].clientWidth;
+		itemW = items[0].getBoundingClientRect().width;
 		goto(posNum, false);
 	}
 	const mouseDown = value => {
