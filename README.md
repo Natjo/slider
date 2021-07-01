@@ -90,8 +90,8 @@ slider_full_slider.create();
                     <img loading="lazy" src="https://picsum.photos/id/145/536/354" alt="">
                     <h3>Lorem ipsum</h3>
                     <p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Fugiat, blanditiis?
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Fugiat, blanditiis?
                     </p>
                     <a href="https://google.fr" target="_blank">more</a>
                 </li>
@@ -106,9 +106,9 @@ slider_full_slider.create();
                     <h3>Lorem ipsum</h3>
                     <p>Lorem ipsum dolor?</p>
                 </li>
-			</ul>
-		</div>
-	</div>
+            </ul>
+        </div>
+    </div>
 </div>
 ```
 #### javascript
@@ -262,11 +262,26 @@ carousel_slider.create();
 ```
 #### javascript
 ```javascript
-
+const carousel_full = document.querySelector('.carousel-full');
+const carousel_full_slider = new Slider(carousel_full);
+carousel_full.querySelector('.prev').onclick = () => carousel_full_slider.prev();
+carousel_full.querySelector('.next').onclick = () => carousel_full_slider.next();
+carousel_full_slider.create();s
 ```
 #### Css
 ```css
-
+.carousel-full{
+    padding: 30px 0;
+	
+    .slider-control{
+        margin-bottom: 20px;
+    }
+    .slider{
+        @media (min-width: 500px){
+            --nb: 3;
+        }	
+    }
+}
 ```
 
 ## Demo
