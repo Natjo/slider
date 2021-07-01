@@ -144,11 +144,11 @@ carousel_slider.create();
 #### Css
 ```css
 .carousel{
-	.slider-wrapper{
-		@media (min-width: 500px){
-			--nb: 3;
-		}	
-	}
+    .slider-wrapper{
+        @media (min-width: 500px){
+            --nb: 3;
+        }	
+    }
 }
 ```
 
@@ -212,16 +212,16 @@ carousel_full_slider.create();s
 #### Css
 ```css
 .carousel-full{
-	padding-bottom: 30px;
-
-	.slider-control{	
-		margin-bottom: 20px;
-	}
-	.slider-wrapper{
-		@media (min-width: 500px){
-			--nb: 3;
-		}	
-	}
+    padding-bottom: 30px;
+    
+    .slider-control{	
+        margin-bottom: 20px;
+    }
+    .slider-wrapper{
+        @media (min-width: 500px){
+            --nb: 3;
+        }	
+    }
 }
 ```
 
