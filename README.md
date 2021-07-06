@@ -12,11 +12,11 @@ Simple grid slider/carousel with no infinite loop
 
 
 ## Usage
-[slider-full](#slider-full)
-[slider](#slider)
-[carousel](#carousel)
-[carousel-full](#carousel-full)
-[carousel-full](#carousel-full)
+* [slider-full](#slider-full)
+* [slider](#slider)
+* [carousel](#carousel)
+* [carousel-full](#carousel-full)
+* [carousel-full-grid](#carousel-full-grid)
 
 ### Slider full
 
