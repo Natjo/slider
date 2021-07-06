@@ -1,17 +1,17 @@
 /**
  * @module Slider
+ * @param {HTMLElement} el 
  * 
  */
 
- function Slider(container){
-	const slider = container.querySelector('.slider-wrapper');
+ function Slider(el){
 	const isTouch = 'ontouchstart' in document.documentElement;
-	const items = slider.querySelectorAll('li');
+	const slider = el.querySelector('.slider-wrapper');
+	const items = el.querySelectorAll('.slider-wrapper > li');
 	const total = items.length;	
 	let itemW, gap, nb;
 	let startX = 0, moveX = 0;
-	let dir;
-	let posNum = 0;
+	let posNum = 0, dir;
 	let posX = 0, oldposX;
 	let isMove = false;
 	
@@ -19,13 +19,7 @@
 	
 	const observer = new IntersectionObserver(entries => {
 		entries.forEach(e => {
-			if(e.isIntersecting){
-				e.target.removeAttribute('data-hidden');
-				e.target.style.visibility = 'visible';
-			}else{
-				e.target.setAttribute('data-hidden', true);
-				e.target.style.visibility = 'hidden';
-			}  
+			e.target.setAttribute('data-hidden', e.isIntersecting ? false : true);
 		});
 	});
 	items.forEach((item,i) => observer.observe(item));
@@ -100,9 +94,9 @@
 				slider.onmouseup = e => mouseUp(e.clientX);
 				return false;
 			}
-			window.addEventListener('resize', resize, {passive: true});
 			document.querySelector('html').addEventListener('mouseleave', leave);
 		}
+		window.addEventListener('resize', resize, {passive: true});
 	}
 	this.destroy = () => {
 		slider.onmousemove = null;

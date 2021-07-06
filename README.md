@@ -3,12 +3,12 @@
 
 ![version](https://img.shields.io/github/manifest-json/v/Natjo/slider)
 
-Light carousel
+Simple grid slider/carousel with no infinite loop
 
 ## Parameters
-| Parameter | Type | Default | Description |
+| Parameter | Type | Description |
 | ------ | ------ | ------ | ------ |
-|  |  | - |  |
+| el | HTMLElement | - | Element that contain  |
 
 
 ## Usage
@@ -222,6 +222,72 @@ carousel_full_slider.create();s
             --nb: 3;
         }	
     }
+}
+```
+
+
+
+### Carousel full (mobile) / Grid (desktop)
+#### html
+```html
+<div class="slider carousel-full-grid">
+    <div class="container">
+        <ul class="slider-wrapper">
+            <li class="item shadow">
+                <img loading="lazy" src="https://picsum.photos/id/157/536/354" alt="">
+                <h3>Lorem</h3>
+                <a href="https://google.fr" target="_blank">see</a>
+            </li>
+            <li class="item shadow">
+                <img loading="lazy" src="https://picsum.photos/id/845/536/354" alt="">
+                <h3>Lorem</h3>
+                <a href="https://google.fr" target="_blank">see</a>
+            </li>
+            <li class="item shadow">
+                <img loading="lazy" src="https://picsum.photos/id/885/536/354" alt="">
+                <h3>Lorem</h3>
+                <a href="https://google.fr" target="_blank">see</a>
+            </li>
+            <li class="item shadow">
+                <img loading="lazy" src="https://picsum.photos/id/825/536/354" alt="">
+                <h3>Lorem</h3>
+                <a href="https://google.fr" target="_blank">see</a>
+            </li>
+            <li class="item shadow">
+                <img loading="lazy" src="https://picsum.photos/id/145/536/354" alt="">
+                <h3>Lorem ipsum</h3>
+                <a href="https://google.fr" target="_blank">see</a>
+            </li>
+        </ul>
+    </div>
+</div>
+```
+#### javascript
+```javascript
+import Breakpoint from '../../modules/breakpoint/breakpoint.js';
+const carousel_full_grid = document.querySelector('.carousel-full-grid');
+const carousel_full_grid_slider = new Slider(carousel_full_grid);
+const breakpoint =  new Breakpoint(600);
+breakpoint.under = () => {
+	carousel_full_grid_slider.create();
+}
+breakpoint.above = () => {
+	carousel_full_grid_slider.destroy();
+}
+```
+#### Css
+```css
+.carousel-full-grid{
+	padding-bottom: 30px;
+
+	@media (min-width: 600px){
+		overflow: revert;
+
+		.slider-wrapper{
+			display: grid;
+			grid-template-columns: repeat(3,1fr);
+		}
+	}
 }
 ```
 
