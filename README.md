@@ -12,10 +12,10 @@ Simple grid slider/carousel with no infinite loop
 
 
 ## Usage
-[slider-full - test](#slider-full)
+[slider-full](#slider-full)
 
+### Slider full
 
-<h3 id="slider-full"></h3>
 #### html
 ```html
 <div class="slider slider-full">
