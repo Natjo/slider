@@ -106,7 +106,6 @@ slider_slider.create();
 
 
 ### Carousel
-
 #### html
 ```html
 <div class="slider carousel">
@@ -158,8 +157,8 @@ carousel_slider.create();
 #### Css
 ```css
 .carousel{
-    .slider-wrapper{
-        @media (min-width: 500px){
+    @media (min-width: 500px){
+        .slider-wrapper{
             --nb: 3;
         }	
     }
@@ -227,12 +226,13 @@ carousel_full_slider.create();s
 ```css
 .carousel-full{
     padding-bottom: 30px;
-    
+
     .slider-control{	
         margin-bottom: 20px;
     }
-    .slider-wrapper{
-        @media (min-width: 500px){
+	
+    @media (min-width: 500px){
+        .slider-wrapper{
             --nb: 3;
         }	
     }
