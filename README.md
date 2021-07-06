@@ -13,6 +13,10 @@ Simple grid slider/carousel with no infinite loop
 
 ## Usage
 [slider-full](#slider-full)
+[slider](#slider)
+[carousel](#carousel)
+[carousel-full](#carousel-full)
+[carousel-full](#carousel-full)
 
 ### Slider full
 
@@ -226,7 +230,6 @@ carousel_full_slider.create();s
     }
 }
 ```
-
 
 
 ### Carousel full (mobile) / Grid (desktop)
