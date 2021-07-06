@@ -7,13 +7,15 @@ Simple grid slider/carousel with no infinite loop
 
 ## Parameters
 | Parameter | Type | Description |
-| ------ | ------ | ------ | ------ |
-| el | HTMLElement | - | Element that contain  |
+| ------ | ------ | ------ |
+| el | HTMLElement | Element that contain |
 
 
 ## Usage
+[slider-full](#slider-full)
 
 ### Slider full
+<h2 id="slider-full"></h2>
 #### html
 ```html
 <div class="slider slider-full">
