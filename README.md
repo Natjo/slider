@@ -241,6 +241,8 @@ carousel_full_slider.create();s
 
 
 ### Carousel full (mobile) / Grid (desktop)
+If need carousel on mobile and a grid in desktop.  
+
 #### html
 ```html
 <div class="slider carousel-full-grid">
@@ -291,16 +293,16 @@ breakpoint.above = () => {
 #### Css
 ```css
 .carousel-full-grid{
-	padding-bottom: 30px;
+    padding-bottom: 30px;
 
-	@media (min-width: 600px){
-		overflow: revert;
+    @media (min-width: 600px){
+        overflow: revert;
 
-		.slider-wrapper{
-			display: grid;
-			grid-template-columns: repeat(3,1fr);
-		}
-	}
+        .slider-wrapper{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+        }
+    }
 }
 ```
 
