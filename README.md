@@ -3,12 +3,20 @@
 
 ![version](https://img.shields.io/github/manifest-json/v/Natjo/slider)
 
-Simple grid slider/carousel with no infinite loop
+Simple grid slider/carousel with no infinite loop  
+Element need `slider` class and need `slider-wrapper` list element that contain `li`
+Possibility to destroy and/or activate the slider see [carousel-full to grid](#user-content-carousel-full-mobile--grid-desktop)
 
 ## Parameters
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| el | HTMLElement | Element that contain |
+| el | HTMLElement | Element |
+
+## Methods
+| Method | Type | Description |
+| ------ | ------ | ------ |
+| create | function | Activate the slider |
+| destroy | function | Desactivate the slider |
 
 
 ## Usage
@@ -16,7 +24,7 @@ Simple grid slider/carousel with no infinite loop
 * [slider](#slider)
 * [carousel](#carousel)
 * [carousel-full](#carousel-full)
-* [carousel-full-grid](#carousel-full-grid)
+* [carousel-full to grid](#user-content-carousel-full-mobile--grid-desktop)
 
 ### Slider full
 

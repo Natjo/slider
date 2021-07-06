@@ -15,4 +15,12 @@
 			pointer-events: none;
 		}
 	}
+	&.goto{
+		transition: transform .4s ease;
+	}
+}
+.slider-item{
+	&[data-hidden=true]{
+		visibility: hidden;
+	}
 }

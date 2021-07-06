@@ -26,7 +26,7 @@
 	
 	const goto = (value, transition = true) => {
 		posX = -value * (itemW + gap);
-		if(transition) slider.style.transition = 'transform .4s ease';
+		if(transition) slider.classList.add('goto');
 		slider.style.transform = `translate3d(${posX}px,0,0)`;
 	}
 	const resize = () => {
@@ -38,7 +38,7 @@
 	const mouseDown = value => {
 		moveX = value;
 		startX = value - posX;
-		slider.style.transition = 'none';
+		slider.classList.remove('goto');
 		window.addEventListener('mouseup', clickout);
 	}
 	const mouseMove = value => {
