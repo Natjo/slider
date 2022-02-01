@@ -4,24 +4,18 @@
  * 
  */
 
-function Slider(slider) {
+ function Slider(slider) {
 	const isTouchable = 'ontouchstart' in document.documentElement;
 	const items = slider.querySelectorAll('.item');
+	const content =  slider.querySelector('.slider-content');
     const btn_prev = slider.querySelector('.slider-btn.prev');
     const btn_next = slider.querySelector('.slider-btn.next');
 	const pagination = document.createElement('div');
 	pagination.className = 'slider-pagination';
 	slider.appendChild(pagination);
-	let bullets = [];
-	for(let item of items){
-		const bullet = document.createElement('button');
-		bullet.setAttribute('aria-hidden', true);
-		bullet.setAttribute('tabindex', -1);
-		pagination.appendChild(bullet);
-		bullets.push(bullet);
-	} 
-	const content = slider.querySelector('.slider-content');
-    const total = items.length;
+	const bullets = [];
+	const total = items.length;
+
     let itemW, gap, nb;
     let startX = 0;
     let moveX = 0;
@@ -58,7 +52,7 @@ function Slider(slider) {
 
     const goto = (value, transition = true) => {
         bullets.forEach(btn => {
-			btn.classList[bullets[posNum] === btn ? 'add' : 'remove']('active')
+			btn.classList[bullets[Math.ceil(value/nb)] === btn ? 'add' : 'remove']('active')
 		});
         posX = -value * (itemW + gap);
         if (transition) content.style.transition = 'transform .4s ease';
@@ -107,14 +101,16 @@ function Slider(slider) {
 	
 	const focus = (val) => {
 		content.addEventListener('transitionend', () => items[val].querySelector('a').focus(), {once: true});
-	}
+	};
 
     const prev = () => {
         if (posNum > 0) {
-			posNum = posNum - nb;
+			let offset = nb + Math.ceil(posNum / nb) * nb - total;
+			if (offset <= 0) offset = 0;
+			posNum = posNum - nb + offset;
 			if (posNum < 0) posNum = 0;
             goto(posNum);
-			focus(posNum + nb -1);
+			focus(posNum + nb - 1);
         }
     };
 
@@ -148,13 +144,18 @@ function Slider(slider) {
             };
             window.addEventListener('resize', resize, {passive: true});
         }
-
-		bullets.forEach((btn, i) => btn.onclick = () => {
-			posNum = i * nb;
-			if (posNum > total - nb) posNum = total - nb;
-			goto(posNum)
-		});
-
+		for(let i = 0; i < total; i++){
+			const bullet = document.createElement('button');
+			bullet.setAttribute('aria-hidden', true);
+			bullet.setAttribute('tabindex', -1);
+			pagination.appendChild(bullet);
+			bullets.push(bullet);
+			bullet.onclick = () => {
+				posNum = i * nb;
+				if (posNum > total - nb) posNum = total - nb;
+				goto(posNum)
+			}
+		} 
 		if (btn_prev) btn_prev.onclick = () => prev();
 		if (btn_next) btn_next.onclick = () => next();
     };
