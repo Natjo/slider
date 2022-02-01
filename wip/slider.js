@@ -1,0 +1,176 @@
+/**
+ * @module Slider
+ * @param {HTMLElement} el 
+ * 
+ */
+
+function Slider(slider) {
+	const isTouchable = 'ontouchstart' in document.documentElement;
+	const items = slider.querySelectorAll('.item');
+    const btn_prev = slider.querySelector('.slider-btn.prev');
+    const btn_next = slider.querySelector('.slider-btn.next');
+	const pagination = document.createElement('div');
+	pagination.className = 'slider-pagination';
+	slider.appendChild(pagination);
+	let bullets = [];
+	for(let item of items){
+		const bullet = document.createElement('button');
+		bullet.setAttribute('aria-hidden', true);
+		bullet.setAttribute('tabindex', -1);
+		pagination.appendChild(bullet);
+		bullets.push(bullet);
+	} 
+	const content = slider.querySelector('.slider-content');
+    const total = items.length;
+    let itemW, gap, nb;
+    let startX = 0;
+    let moveX = 0;
+    let posNum = 0;
+    let posX = 0, oldposX;
+    let isMove = false;
+	let contentW;
+	
+    const options = {
+        root: slider,
+        rootMargin: '0px',
+        threshold: 1,
+    };
+	
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            const link = e.target.querySelector('a');
+
+            if (e.isIntersecting) {
+                if (link) {
+                    link.setAttribute('aria-hidden', false);
+                    link.setAttribute('tabindex', 0);
+                }
+                e.target.classList.remove('hidden');
+            } else {
+                if (link) {
+                    link.setAttribute('aria-hidden', true);
+                    link.setAttribute('tabindex', -1);
+                }
+                e.target.classList.add('hidden');
+            }
+        });
+    }, options);
+
+    const goto = (value, transition = true) => {
+        bullets.forEach(btn => {
+			btn.classList[bullets[posNum] === btn ? 'add' : 'remove']('active')
+		});
+        posX = -value * (itemW + gap);
+        if (transition) content.style.transition = 'transform .4s ease';
+        content.style.transform = `translate3d(${posX}px,0,0)`;
+    };
+	
+    const clickout = e => !content.contains(e.target) && mouseUp();
+
+    const mouseDown = value => {
+        startX = value - posX;
+        content.style.transition = 'none';
+        window.addEventListener('mouseup', clickout);
+    };
+    const resize = () => {
+        gap = parseInt(getComputedStyle(content).gridColumnGap);
+        nb = parseInt(getComputedStyle(slider).getPropertyValue('--nb')) || 1;
+		contentW = content.offsetWidth;
+        itemW = items[0].clientWidth;
+		content.style.transition = 'none';
+        goto(posNum, false);
+		bullets.forEach((btn, i) => {
+			btn.style.display = i >= Math.ceil(total / nb) ? 'none' : 'block';
+        });
+    };
+
+    const mouseMove = value => {
+        posX = value - startX - moveX;
+        if (posX != oldposX && !isMove) {
+            content.classList.add('onswipe');
+            isMove = true;
+        }
+        content.style.transform = `translate3d(${posX}px,0,0)`;
+        oldposX = posX;
+    };
+
+    const mouseUp = () => {
+        document.onmousemove = null;
+        document.onmouseup = null;
+		posNum = Math.ceil((-(posX - contentW / 2) / contentW) - 1) * nb;	 
+		if (posNum > total - nb) posNum = total - nb;
+        goto(posNum);
+        window.removeEventListener('mouseup', clickout);
+        content.classList.remove('onswipe');
+        isMove = false;
+    };
+	
+	const focus = (val) => {
+		content.addEventListener('transitionend', () => items[val].querySelector('a').focus(), {once: true});
+	}
+
+    const prev = () => {
+        if (posNum > 0) {
+			posNum = posNum - nb;
+			if (posNum < 0) posNum = 0;
+            goto(posNum);
+			focus(posNum + nb -1);
+        }
+    };
+
+    const next = () => {
+        if (posNum < total - nb) {
+			posNum = posNum + nb;
+			if (posNum > total - nb) posNum = total - nb;
+            goto(posNum);
+			focus(posNum);
+        }
+    };
+
+    this.create = () => {
+        if (total <= nb) return;
+		resize();
+        slider.style.setProperty('--total', total);
+        items.forEach(item => observer.observe(item));
+
+        if (isTouchable) {
+            slider.ontouchstart = e => {
+                mouseDown(e.touches[0].clientX);
+                document.ontouchmove = e => mouseMove(e.touches[0].clientX);
+                document.ontouchend = e => mouseUp(e.changedTouches[0].clientX);
+            };
+        } else {
+            content.onmousedown = e => {
+                mouseDown(e.clientX);
+                document.onmousemove = e => mouseMove(e.clientX);
+                document.onmouseup = e => mouseUp(e.clientX);
+                return false;
+            };
+            window.addEventListener('resize', resize, {passive: true});
+        }
+
+		bullets.forEach((btn, i) => btn.onclick = () => {
+			posNum = i * nb;
+			if (posNum > total - nb) posNum = total - nb;
+			goto(posNum)
+		});
+
+		if (btn_prev) btn_prev.onclick = () => prev();
+		if (btn_next) btn_next.onclick = () => next();
+    };
+	
+    this.destroy = () => {
+        items.forEach(item => observer.unobserve(item));
+        content.onmousemove = null;
+        content.onmouseup = null;
+        slider.ontouchstart = null;
+        slider.onmousedown = null;
+        content.removeAttribute('style');
+		slider.removeAttribute('style');
+        window.removeEventListener('resize', resize);
+    };
+	
+    window.addEventListener('load', resize);
+}
+
+export default Slider;
