@@ -15,7 +15,6 @@
 	slider.appendChild(pagination);
 	const bullets = [];
 	const total = items.length;
-
     let itemW, gap, nb;
     let startX = 0;
     let moveX = 0;
@@ -23,6 +22,20 @@
     let posX = 0, oldposX;
     let isMove = false;
 	let contentW;
+	let oldNum;
+	
+	items.forEach((item,i) => {
+		const bullet = document.createElement('button');
+		bullet.setAttribute('aria-hidden', true);
+		bullet.setAttribute('tabindex', -1);
+		pagination.appendChild(bullet);
+		bullets.push(bullet);
+		bullet.onclick = () => {
+			posNum = i * nb;
+			if (posNum > total - nb) posNum = total - nb;
+			goto(posNum)
+		}
+	});
 	
     const options = {
         root: slider,
@@ -49,16 +62,31 @@
             }
         });
     }, options);
-
+	
     const goto = (value, transition = true) => {
         bullets.forEach(btn => {
-			btn.classList[bullets[Math.ceil(value/nb)] === btn ? 'add' : 'remove']('active')
+			btn.classList[bullets[Math.ceil(value / nb)] === btn ? 'add' : 'remove']('active')
 		});
         posX = -value * (itemW + gap);
         if (transition) content.style.transition = 'transform .4s ease';
         content.style.transform = `translate3d(${posX}px,0,0)`;
+		
+		if(posNum == 0){
+			btn_prev.setAttribute('tabindex', -1);
+			btn_prev.setAttribute('aria-disabled', true);
+		} else{
+			btn_prev.setAttribute('tabindex', 0);
+			btn_prev.setAttribute('aria-disabled', false);
+		}
+		if (posNum >= total - nb){
+			btn_next.setAttribute('tabindex', -1);
+			btn_next.setAttribute('aria-disabled', true);
+		}else{
+			btn_next.setAttribute('tabindex', 0);
+			btn_next.setAttribute('aria-disabled', false);
+		}
     };
-	
+
     const clickout = e => !content.contains(e.target) && mouseUp();
 
     const mouseDown = value => {
@@ -66,6 +94,7 @@
         content.style.transition = 'none';
         window.addEventListener('mouseup', clickout);
     };
+
     const resize = () => {
         gap = parseInt(getComputedStyle(content).gridColumnGap);
         nb = parseInt(getComputedStyle(slider).getPropertyValue('--nb')) || 1;
@@ -73,9 +102,7 @@
         itemW = items[0].clientWidth;
 		content.style.transition = 'none';
         goto(posNum, false);
-		bullets.forEach((btn, i) => {
-			btn.style.display = i >= Math.ceil(total / nb) ? 'none' : 'block';
-        });
+		bullets.forEach((btn, i) => btn.style.display = i >= Math.ceil(total / nb) ? 'none' : 'block');
     };
 
     const mouseMove = value => {
@@ -99,10 +126,13 @@
         isMove = false;
     };
 	
-	const focus = (val) => {
-		content.addEventListener('transitionend', () => items[val].querySelector('a').focus(), {once: true});
+	const focus = val => {
+		content.addEventListener('transitionend', () => {
+			oldNum === val && items[val].querySelector('a').focus()
+		}, {once: true});
+		oldNum = val;
 	};
-
+	
     const prev = () => {
         if (posNum > 0) {
 			let offset = nb + Math.ceil(posNum / nb) * nb - total;
@@ -127,8 +157,6 @@
         if (total <= nb) return;
 		resize();
         slider.style.setProperty('--total', total);
-        items.forEach(item => observer.observe(item));
-
         if (isTouchable) {
             slider.ontouchstart = e => {
                 mouseDown(e.touches[0].clientX);
@@ -144,34 +172,38 @@
             };
             window.addEventListener('resize', resize, {passive: true});
         }
-		for(let i = 0; i < total; i++){
-			const bullet = document.createElement('button');
-			bullet.setAttribute('aria-hidden', true);
-			bullet.setAttribute('tabindex', -1);
-			pagination.appendChild(bullet);
-			bullets.push(bullet);
-			bullet.onclick = () => {
-				posNum = i * nb;
-				if (posNum > total - nb) posNum = total - nb;
-				goto(posNum)
-			}
-		} 
+		items.forEach((item,i) => {
+			observer.observe(item)
+			item.setAttribute('aria-roledescription','slide');
+			item.setAttribute('role','group');
+			item.setAttribute('aria-label', `${i + 1}/${total}`);
+		});
+		slider.setAttribute('aria-roledescription', 'carousel');
+		content.setAttribute('aria-live', 'polite');
 		if (btn_prev) btn_prev.onclick = () => prev();
 		if (btn_next) btn_next.onclick = () => next();
     };
 	
     this.destroy = () => {
-        items.forEach(item => observer.unobserve(item));
-        content.onmousemove = null;
-        content.onmouseup = null;
-        slider.ontouchstart = null;
-        slider.onmousedown = null;
-        content.removeAttribute('style');
+        document.onmousemove = null;
+        document.onmouseup = null;
+        document.ontouchstart = null;
+		window.removeEventListener('resize', resize);
 		slider.removeAttribute('style');
-        window.removeEventListener('resize', resize);
+		slider.removeAttribute('aria-roledescription');
+        content.onmousedown = null;
+        content.removeAttribute('style');
+		content.removeAttribute('aria-live');
+		items.forEach(item => {
+			observer.unobserve(item);
+			item.removeAttribute('aria-roledescription');
+			item.removeAttribute('role');
+			item.removeAttribute('aria-label');
+		});
     };
-	
+
     window.addEventListener('load', resize);
 }
+
 
 export default Slider;
