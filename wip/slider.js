@@ -23,6 +23,8 @@
     let isMove = false;
 	let contentW;
 	let oldNum;
+	var startValue = 0;
+	let dir;
 	
 	items.forEach((item,i) => {
 		const bullet = document.createElement('button');
@@ -90,6 +92,7 @@
     const clickout = e => !content.contains(e.target) && mouseUp();
 
     const mouseDown = value => {
+		startValue = value;
         startX = value - posX;
         content.style.transition = 'none';
         window.addEventListener('mouseup', clickout);
@@ -98,8 +101,8 @@
     const resize = () => {
         gap = parseInt(getComputedStyle(content).gridColumnGap);
         nb = parseInt(getComputedStyle(slider).getPropertyValue('--nb')) || 1;
-		contentW = content.offsetWidth;
-        itemW = items[0].clientWidth;
+		contentW = content.getBoundingClientRect().width;
+        itemW = items[0].getBoundingClientRect().width;
 		content.style.transition = 'none';
         goto(posNum, false);
 		bullets.forEach((btn, i) => btn.style.display = i >= Math.ceil(total / nb) ? 'none' : 'block');
@@ -112,14 +115,22 @@
             isMove = true;
         }
         content.style.transform = `translate3d(${posX}px,0,0)`;
+		dir = startValue - value;
         oldposX = posX;
     };
 
     const mouseUp = () => {
         document.onmousemove = null;
         document.onmouseup = null;
-		posNum = Math.ceil((-(posX - contentW / 2) / contentW) - 1) * nb;	 
+		
+		if(dir >= 40) posNum = posNum + nb;
+		if(dir <- 40) posNum = posNum - nb;
+		
+		//posNum = Math.ceil(-(posX - (itemW/2+ gap)) / (itemW+gap))-1; no group
+		//posNum = Math.ceil((-(posX - contentW / 2) / (contentW)) - 1) * nb;
+	
 		if (posNum > total - nb) posNum = total - nb;
+		if (posNum < 0) posNum = 0;
         goto(posNum);
         window.removeEventListener('mouseup', clickout);
         content.classList.remove('onswipe');
@@ -130,7 +141,7 @@
 		content.addEventListener('transitionend', () => {
 			oldNum === val && items[val].querySelector('a').focus()
 		}, {once: true});
-		oldNum = val;
+		oldNum = val;				
 	};
 	
     const prev = () => {
