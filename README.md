@@ -1,11 +1,10 @@
 
-# Carousel
+# Slider
 
 ![version](https://img.shields.io/github/manifest-json/v/Natjo/slider)
 
-Simple grid slider/carousel with no infinite loop  
-Element need `slider` class and need `slider-wrapper` list element that contain `li`
-Possibility to destroy and/or activate the slider see [carousel-full to grid](#user-content-carousel-full-mobile--grid-desktop)
+Slider
+
 
 ## Parameters
 | Parameter | Type | Description |
@@ -18,294 +17,76 @@ Possibility to destroy and/or activate the slider see [carousel-full to grid](#u
 | create | function | Activate the slider |
 | destroy | function | Desactivate the slider |
 
+## Options
+| Class  | Description |
+| ------ | ------ |
+| full | To have full width slider |
 
 ## Usage
-* [slider-full](#slider-full)
-* [slider](#slider)
-* [carousel](#carousel)
-* [carousel-full](#carousel-full)
-* [carousel-full to grid](#user-content-carousel-full-mobile--grid-desktop)
 
-### Slider full
-
-#### html
+### Html
 ```html
-<div class="slider slider-full">
-    <ul class="slider-wrapper">
-        <li class="item1">
-            <img loading="lazy" src="https://picsum.photos/id/157/536/354" alt="">
-        </li>
-        <li class="item1">
-            <img loading="lazy" src="https://picsum.photos/id/845/536/354" alt="">
-        </li>
-        <li class="item1">
-            <img loading="lazy" src="https://picsum.photos/id/885/536/354" alt="">
-        </li>
-        <li class="item1">
-            <img loading="lazy" src="https://picsum.photos/id/825/536/354" alt="">
-        </li>
-        <li class="item1">
-            <img loading="lazy" src="https://picsum.photos/id/145/536/354" alt="">
-        </li>
-    </ul>
-</div>
+<section class="strate">
+	<div class="container">
+		<div class="slider" aria-label="lorem">
+			<button class="slider-btn prev" aria-label="Previous slides">Prev</button>
+			<ul class="slider-content">
+				<li class="item"><a href="/">1</a></li>
+				<li class="item"><a href="/">2</a></li>
+				<li class="item"><a href="/">3</a></li>
+				<li class="item"><a href="/">4</a></li>
+				<li class="item"><a href="/">5</a></li>
+				<li class="item"><a href="/">6</a></li>
+				<li class="item"><a href="/">7</a></li>
+				<li class="item"><a href="/">8</a></li>
+				<li class="item"><a href="/">9</a></li>
+				<li class="item"><a href="/">10</a></li>
+				<li class="item"><a href="/">11</a></li>
+			</ul>
+			<button class="slider-btn next" aria-label="Next slides">Next</button>
+		</div>
+	</div>
+</section>
 ```
-#### javascript
+
+### javascript
 ```javascript
-const slider_full = document.querySelector('.slider-full');
-const slider_full_slider = new Slider(slider_full);
-slider_full_slider.create();
+const slider = document.querySelector('.slider');
+const myscroll = new scroller(slider);
+myscroll.enable();
 ```
 
-
-
-### Slider
-#### html
-```html
-<div class="slider mySlider">
-    <ul class="slider-wrapper">
-        <li class="item1">
-            <a href="https://google.fr" target="_blank">
-                <img loading="lazy" src="https://picsum.photos/id/157/536/354" alt="">
-                <h3>Lorem</h3>
-            </a>
-        </li>
-        <li class="item1">
-            <a href="https://google.fr" target="_blank">
-                <img loading="lazy" src="https://picsum.photos/id/845/536/354" alt="">
-                <h3>Lorem</h3>
-            </a>
-        </li>
-        <li class="item1">
-            <a href="https://google.fr" target="_blank">
-                <img loading="lazy" src="https://picsum.photos/id/885/536/354" alt="">
-                <h3>Lorem</h3>
-            </a>
-        </li>
-        <li class="item1">
-            <a href="https://google.fr" target="_blank">
-                <img loading="lazy" src="https://picsum.photos/id/825/536/354" alt="">
-                <h3>Lorem</h3>
-            </a>
-        </li>
-        <li class="item1">
-            <a href="https://google.fr" target="_blank">
-                <img loading="lazy" src="https://picsum.photos/id/145/536/354" alt="">
-                <h3>Lorem ipsum</h3>
-            </a>
-        </li>
-    </ul>
-</div>
-```
-#### javascript
-```javascript
-const slider = document.querySelector('.mySlider');
-const slider_slider = new Slider(slider);
-slider_slider.create();
-```
-
-
-### Carousel
-#### html
-```html
-<div class="slider carousel">
-    <ul class="slider-wrapper">
-        <li class="item">
-            <img loading="lazy" src="https://picsum.photos/id/157/536/354" alt="">
-            <h3>Lorem</h3>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, reiciendis
-                optio. Corrupti.
-            </p>
-            <a href="https://google.fr" target="_blank">see</a>
-        </li>
-        <li class="item">
-            <img loading="lazy" src="https://picsum.photos/id/845/536/354" alt="">
-            <h3>Lorem</h3>
-            <p>Lorem ipsum dolor sit amet.</p>
-            <a href="https://google.fr" target="_blank">see</a>
-        </li>
-        <li class="item">
-            <img loading="lazy" src="https://picsum.photos/id/885/536/354" alt="">
-            <h3>Lorem</h3>
-            <p>Lorem ipsum dolor sit amet.</p>
-            <a href="https://google.fr" target="_blank">see</a>
-        </li>
-        <li class="item">
-            <img loading="lazy" src="https://picsum.photos/id/825/536/354" alt="">
-            <h3>Lorem</h3>
-            <a href="https://google.fr" target="_blank">see</a>
-        </li>
-        <li class="item">
-            <img loading="lazy" src="https://picsum.photos/id/145/536/354" alt="">
-            <h3>Lorem ipsum</h3>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Fugiat, blanditiis?
-            </p>
-            <a href="https://google.fr" target="_blank">see</a>
-        </li>
-    </ul>
-</div>
-```
-#### javascript
-```javascript
-const carousel = document.querySelector('.carousel');
-const carousel_slider = new Slider(carousel);
-carousel_slider.create();
-```
-#### Css
+### css slider in container
 ```css
-.carousel{
-    @media (min-width: 500px){
-        .slider-wrapper{
-            --nb: 3;
-        }	
-    }
+.strate{
+	.slider{
+		overflow: hidden;
+		
+		@media (min-width: 400px){
+			--nb: 2;
+		}
+		@media (min-width: 8000px){
+			--nb: 4;
+		}
+	}
 }
 ```
 
-### Carousel full
-#### html
-```html
-<div class="slider carousel-full">
-    <div class="container">
-        <div class="slider-control">
-            <button class="prev">prev</button>
-            <button class="next">next</button>
-        </div>
-
-        <ul class="slider-wrapper">
-            <li class="item shadow">
-                <img loading="lazy" src="https://picsum.photos/id/157/536/354" alt="">
-                <h3>Lorem</h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, reiciendis optio.
-                </p>
-                <a href="https://google.fr" target="_blank">see</a>
-            </li>
-            <li class="item shadow">
-                <img loading="lazy" src="https://picsum.photos/id/845/536/354" alt="">
-                <h3>Lorem</h3>
-                <p>Lorem ipsum dolor sit amet.</p>
-                <a href="https://google.fr" target="_blank">see</a>
-            </li>
-            <li class="item shadow">
-                <img loading="lazy" src="https://picsum.photos/id/885/536/354" alt="">
-                <h3>Lorem</h3>
-                <p>Lorem ipsum dolor sit amet.</p>
-                <a href="https://google.fr" target="_blank">see</a>
-            </li>
-            <li class="item shadow">
-                <img loading="lazy" src="https://picsum.photos/id/825/536/354" alt="">
-                <h3>Lorem</h3>
-                <a href="https://google.fr" target="_blank">see</a>
-            </li>
-            <li class="item shadow">
-                <img loading="lazy" src="https://picsum.photos/id/145/536/354" alt="">
-                <h3>Lorem ipsum</h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Fugiat, blanditiis?
-                </p>
-                <a href="https://google.fr" target="_blank">see</a>
-            </li>
-        </ul>
-    </div>
-</div>
-```
-#### javascript
-```javascript
-const carousel_full = document.querySelector('.carousel-full');
-const carousel_full_slider = new Slider(carousel_full);
-carousel_full.querySelector('.prev').onclick = () => carousel_full_slider.prev();
-carousel_full.querySelector('.next').onclick = () => carousel_full_slider.next();
-carousel_full_slider.create();s
-```
-#### Css
+### css slider fulll width
 ```css
-.carousel-full{
-    padding-bottom: 30px;
+.strate{
+overflow: hidden;
 
-    .slider-control{	
-        margin-bottom: 20px;
-    }
-	
-    @media (min-width: 500px){
-        .slider-wrapper{
-            --nb: 3;
-        }	
-    }
-}
-```
-
-
-### Carousel full (mobile) / Grid (desktop)
-If need carousel on mobile and a grid in desktop.  
-
-#### html
-```html
-<div class="slider carousel-full-grid">
-    <div class="container">
-        <ul class="slider-wrapper">
-            <li class="item shadow">
-                <img loading="lazy" src="https://picsum.photos/id/157/536/354" alt="">
-                <h3>Lorem</h3>
-                <a href="https://google.fr" target="_blank">see</a>
-            </li>
-            <li class="item shadow">
-                <img loading="lazy" src="https://picsum.photos/id/845/536/354" alt="">
-                <h3>Lorem</h3>
-                <a href="https://google.fr" target="_blank">see</a>
-            </li>
-            <li class="item shadow">
-                <img loading="lazy" src="https://picsum.photos/id/885/536/354" alt="">
-                <h3>Lorem</h3>
-                <a href="https://google.fr" target="_blank">see</a>
-            </li>
-            <li class="item shadow">
-                <img loading="lazy" src="https://picsum.photos/id/825/536/354" alt="">
-                <h3>Lorem</h3>
-                <a href="https://google.fr" target="_blank">see</a>
-            </li>
-            <li class="item shadow">
-                <img loading="lazy" src="https://picsum.photos/id/145/536/354" alt="">
-                <h3>Lorem ipsum</h3>
-                <a href="https://google.fr" target="_blank">see</a>
-            </li>
-        </ul>
-    </div>
-</div>
-```
-#### javascript
-```javascript
-import Breakpoint from '../../modules/breakpoint/breakpoint.js';
-const carousel_full_grid = document.querySelector('.carousel-full-grid');
-const carousel_full_grid_slider = new Slider(carousel_full_grid);
-const breakpoint =  new Breakpoint(600);
-breakpoint.under = () => {
-	carousel_full_grid_slider.create();
-}
-breakpoint.above = () => {
-	carousel_full_grid_slider.destroy();
-}
-```
-#### Css
-```css
-.carousel-full-grid{
-    padding-bottom: 30px;
-
-    @media (min-width: 600px){
-        overflow: revert;
-
-        .slider-wrapper{
-            display: grid;
-            grid-template-columns: repeat(3,1fr);
-        }
-    }
+	.slider {
+		@media (min-width: 600px){
+			--nb: 3;
+		}
+	}
+	.slider-pagination{
+		display: none;
+	}
 }
 ```
 
 ## Demo
-[See codepen demo](https://codepen.io/natjo/pen/VwpBjWE)
-[See best codepen demo](https://codepen.io/natjo/pen/JjOPMMX)
+[See codepen demo](https://codepen.io/natjo/pen/JjOPMMX)
