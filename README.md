@@ -79,7 +79,7 @@ myscroll.enable();
 		}
     }
     .slider-pagination{
-		display: none;
+        display: none;
     }
 }
 ```
