@@ -23,25 +23,25 @@ Slider
 ### Html
 ```html
 <section class="strate">
-	<div class="container">
-		<div class="slider" aria-label="lorem">
-			<button class="slider-btn prev" aria-label="Previous slides">Prev</button>
-			<ul class="slider-content">
-				<li class="item"><a href="/">1</a></li>
-				<li class="item"><a href="/">2</a></li>
-				<li class="item"><a href="/">3</a></li>
-				<li class="item"><a href="/">4</a></li>
-				<li class="item"><a href="/">5</a></li>
-				<li class="item"><a href="/">6</a></li>
-				<li class="item"><a href="/">7</a></li>
-				<li class="item"><a href="/">8</a></li>
-				<li class="item"><a href="/">9</a></li>
-				<li class="item"><a href="/">10</a></li>
-				<li class="item"><a href="/">11</a></li>
-			</ul>
-			<button class="slider-btn next" aria-label="Next slides">Next</button>
-		</div>
-	</div>
+    <div class="container">
+        <div class="slider" aria-label="lorem">
+            <button class="slider-btn prev" aria-label="Previous slides">Prev</button>
+            <ul class="slider-content">
+                <li class="item"><a href="/">1</a></li>
+                <li class="item"><a href="/">2</a></li>
+                <li class="item"><a href="/">3</a></li>
+                <li class="item"><a href="/">4</a></li>
+                <li class="item"><a href="/">5</a></li>
+                <li class="item"><a href="/">6</a></li>
+                <li class="item"><a href="/">7</a></li>
+                <li class="item"><a href="/">8</a></li>
+                <li class="item"><a href="/">9</a></li>
+                <li class="item"><a href="/">10</a></li>
+                <li class="item"><a href="/">11</a></li>
+            </ul>
+            <button class="slider-btn next" aria-label="Next slides">Next</button>
+        </div>
+    </div>
 </section>
 ```
 
@@ -55,16 +55,16 @@ myscroll.enable();
 ### css slider in container
 ```css
 .strate{
-	.slider{
-		overflow: hidden;
-		
-		@media (min-width: 400px){
-			--nb: 2;
-		}
-		@media (min-width: 8000px){
-			--nb: 4;
-		}
-	}
+    .slider{
+    overflow: hidden;
+
+        @media (min-width: 400px){
+            --nb: 2;
+        }
+        @media (min-width: 8000px){
+            --nb: 4;
+        }
+    }
 }
 ```
 
@@ -72,15 +72,15 @@ myscroll.enable();
 ```css
 .strate{
     overflow: hidden;
-    
-	.slider {
-		@media (min-width: 600px){
-			--nb: 3;
+
+    .slider {
+        @media (min-width: 600px){
+            --nb: 3;
 		}
-	}
-	.slider-pagination{
+    }
+    .slider-pagination{
 		display: none;
-	}
+    }
 }
 ```
 
