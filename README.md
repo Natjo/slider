@@ -17,10 +17,6 @@ Slider
 | create | function | Activate the slider |
 | destroy | function | Desactivate the slider |
 
-## Options
-| Class  | Description |
-| ------ | ------ |
-| full | To have full width slider |
 
 ## Usage
 
@@ -75,8 +71,8 @@ myscroll.enable();
 ### css slider fulll width
 ```css
 .strate{
-overflow: hidden;
-
+    overflow: hidden;
+    
 	.slider {
 		@media (min-width: 600px){
 			--nb: 3;
